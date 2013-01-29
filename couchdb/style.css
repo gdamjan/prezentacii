@@ -1,0 +1,7 @@
+object, img, video {
+    width: 800px;
+    height: 600px;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}

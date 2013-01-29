@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CouchDB introduction</title>
+
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+    <link type="text/css" rel="stylesheet" href="../reveal.js/css/reveal.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../reveal.js/css/theme/default.css"/>
+    <link type="text/css" rel="stylesheet" href="../reveal.js/lib/css/zenburn.css"/>
+
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<h1>hi</h1>
+<aside class="notes">
+Hi all,
+this will be a presentation about CouchDB, which is a NoSQL database,
+because that's all the fad these days, isn't it :)
+<br/>
+There are a lot of other NoSQL databases out there today, but I choose CouchDB because
+it's fairly easy to install, you can start using it right away and is probably the most
+canonical NoSQL.
+</aside>
+</section>
+
+<section>
+<h1>CouchDB</h1>
+<h3>What - Why - How</h3>
+
+<aside class="notes">
+So maybe it's not the best all around, but a great entry-point to the
+world of NoSQL and excellent for learning.<br>
+I hope to help you understand a little bit more about NoSQL in general
+and through CouchDB specifically, about what NoSQL databases are,
+why they exists and how they work.
+</aside>
+</section>
+
+<section>
+<h3><a href="http://damjan.softver.org.mk/">damjan.softver.org.mk</a></h3>
+   <ul>
+     <li>   <span style="color: grey">gdamjan @</span> Github  </li>
+     <li>   <span style="color: grey">gdamjan @</span> Twitter </li>
+     <li>   <span style="color: grey">gdamjan @</span> Google+ </li>
+     <li>   Facebook (if you must)  </li>
+     <li>   irc://freenode.net/#lugola </li>
+   </ul>
+<aside class="notes">
+  And me…
+  Damjan Georgievski from Skopje…
+  We have a Free Software NGO there…
+  also a hacklab… regional hacker meetings NSND…
+  my email, github, homepage
+</aside>
+</section>
+
+<section>
+<h2>CouchDB</h2>
+<aside class="notes">
+Soooo, CouchDB
+</aside>
+</section>
+
+<section>
+<h2>What</h2>
+<ul>
+   <li> Database, data is documents </li>
+   <li> accessible via HTTP, JSON, REST </li>
+   <li> ACID </li>
+   <li> Map-Reduce </li>
+   <li> JavaScript views (indexes) </li>
+   <li> Multi-master replication </li>
+   <li> Fault-tolerant and distributed (Erlang-OTP) </li>
+   <li> Apache project, free software (APL-2.0) </li>
+</ul>
+<aside class="notes">
+These are some of the important key words CouchDB responds to…
+</aside>
+</section>
+
+
+<section>
+<h2>What it is <b style="color:red">not</b></h2>
+
+<ul>
+   <li> SQL </li>
+   <li> tables </li>
+   <li> relational </li>
+</ul>
+<aside class="notes">
+it's not an SQL relational database you've all seen… actually if you start
+learning CouchDB (or another NoSQL) database it's best first to forget
+everything about the relational world (ok most).
+</aside>
+</section>
+
+<section>
+<h2>What: Document Database</h2>
+<p>CouchDB stores JSON documents
+<pre>
+{
+  "name": "Damjan",
+  "type": "person",
+  "about": "… bla bla bla …"
+}
+</pre>
+<span style="color: grey">(JSON: java-script object notation)</span>
+</p>
+<aside class="notes">… as I said</aside>
+</section>
+
+<section>
+<h2>What: Document Database</h2>
+<p>
+   CouchDB stores <em style="color:red">schema-less</em> JSON documents
+<pre>
+{
+  "name": "Damjan",
+  "type": "person",
+  "about": "… bla bla bla …",
+  "where": { "event": "sfk11",
+           "long": 21.16, "lat": 42.66},
+  "tags" : ["some", "tags", "why", "not"]
+}
+</pre>
+</p>
+<aside class="notes">
+those documents can be freely updated with more fields, no matter the structure
+<br>
+a JSON object is a key:value structure
+<br>
+values can be strings, lists, numbers (float), booleans and other objects
+</aside>
+</section>
+
+<section>
+<h2>What: ACID</h2>
+<ul>
+   <li> Atomicity </li>
+   <li> Consistency </li>
+   <li> Isolation </li>
+   <li> Durability </li>
+</ul>
+<p style="color: grey">(ask wikipedia)</p>
+<aside class="notes">
+As a database it's very important that CouchDB has all the important transactional properties…
+</aside>
+</section>
+
+<section>
+<h2>What: MVCC</h2>
+<p>
+Multiple Version Concurrency Control
+<br>
+(no locks)
+</p>
+<aside class="notes">
+one of the big issues in traditional DBs is locking
+<br>
+some other nosql databases use a consensus protocol
+</aside>
+</section>
+
+<section>
+<h2>What: REST</h2>
+<p>
+   To create a database:
+   <pre class=code>
+curl -X PUT http://localhost:5984/db-name
+{"ok":true}
+   </pre>
+</p>
+</section>
+
+<section>
+<h2>What: REST</h2>
+<p>
+   To delete a database:
+   <pre class=code>
+curl -X DELETE http://localhost:5984/db-name
+{"ok":true}
+   </pre>
+</p>
+</section>
+
+<section>
+<h2>What: REST</h2>
+<p>
+   To create a document:
+   <pre class=code>
+curl -X PUT http://localhost:5984/db-name/doc-id -d \
+   '{ "type": "person", "name": "Damjan"}'
+
+{"ok":true,"id":"doc-id","rev":"1-d327b3aad452c8ee83a0cdb0944f5242"}
+   </pre>
+</p>
+<aside class="notes">
+to update a document you must put back the revision
+</aside>
+</section>
+
+<section>
+<h2>What: REST</h2>
+<p>
+   To update a document:
+   <pre class=code>
+curl -X PUT http://localhost:5984/db-name/doc-id?rev=1-d327b3aad452c8ee83a0cdb0944f5242 -d \
+   '{ "type": "person", "name": "Damjan", "points": 5}'
+
+{"ok":true,"id":"doc-id","rev":"2-2c75aae1cb77420b117e97d1d4cd924d"}
+   </pre>
+</p>
+</section>
+
+<section>
+<h2>What: REST</h2>
+<ul>
+ <li> GET </li>
+ <li> POST </li>
+ <li> PUT </li>
+ <li> DELETE </li>
+</ul>
+</section>
+
+
+<section>
+<h2>Map &amp; Reduce</h2>
+<p>creating b-tree indexes with javascript</p>
+<aside class="notes">
+you might have heard about Map &amp; Reduce from that Google paper - it's
+how they managed to scale their operations
+<br>
+but first let's see how that magic looks like
+<br>
+assume we have a database filled with documents like the one before
+</aside>
+</section>
+
+<section>
+<h2>Map</h2>
+<pre class=code>
+function (doc) {
+   if(doc.name &amp;&amp; doc.points) {
+      emit(doc.name, doc.points)
+}
+</pre>
+<pre>
+{"total_rows":17, "rows": [
+  { "key":"Alice", "value":2 },
+  { "key":"Bob", "value":10 },
+  { "key":"Bob", "value":2 },
+   …
+]}
+</pre>
+<aside class="notes">
+you have two stages, first is map
+<br>
+it creates key : value - filters and extracts
+</aside>
+</section>
+
+
+<section>
+<h2>Reduce</h2>
+<pre class=code>
+function(keys, values, rereduce) {
+   return sum(values);
+}
+</pre>
+<pre>
+{"rows": [
+  { "key": "Alice", "value":2},
+  { "key": "Bob", "value":12},
+   …
+]}
+</pre>
+<aside class="notes">
+second stage, reduce - aggregates
+<br>
+map &amp; reduce are incremental and scalable
+</aside>
+</section>
+
+<section>
+<h2>What</h2>
+<ul>
+   <li> Database, data is documents </li>
+   <li> access via HTTP, JSON, REST </li>
+   <li> ACID </li>
+   <li> Map-Reduce </li>
+   <li> JavaScript views (indexes) </li>
+   <li> Multi-master replication </li>
+   <li> Fault-tolerant and distributed (Erlang-OTP) </li>
+   <li> Apache project, free software (APL-2.0) </li>
+</ul>
+<aside class="notes">
+I've covered just part of what CouchDB is, the most basic things…<br>
+replication, Erlang 99.99999%
+</aside>
+</section>
+
+
+<section>
+<h2>… and then some other stuff</h2>
+<ul>
+   <li> attachments </li>
+   <li> changes notification </li>
+   <li> geo-couch </li>
+   <li> full-text search </li>
+</ul>
+</section>
+
+
+<section>
+<h2>Why</h2>
+<aside class="notes">
+One of the biggest problems today: scale, scale, scale
+<br>
+relational databases can't scale, unless denormalized, at which point
+you've lost the relational part<br>
+<b>plus</b>: Easy, Flexible, Simple (Relaxed)<br>
+<b>plus</b>: Replication is the killer feature of CouchDB
+</aside>
+</section>
+
+
+<section>
+<h2>How</h2>
+<p>Lets see… <a href="http://localhost:5985/_utils/">http://localhost:5984/_utils/</a>
+</p>
+<aside class="notes">
+open a terminal and show how it's started, how it's killed, and how it's started again
+<br>
+show futon, say how it's static html+js, using the REST HTTP interface
+<br>
+show replication and http://localhost:5985/sfk11-demo/_changes
+</aside>
+</section>
+
+
+<section>
+<h2>Couch Apps</h2>
+<aside class="notes">
+as I've show before, CouchDB is made of the web, http, json &amp; javascript
+<br>
+sometime before it web 2.0 apps (or ajax apps) paved the way how to create modern applications
+they used javascript, json and http… so CouchDB fits there naturally…
+</aside>
+</section>
+
+
+<section>
+<h2>Couch Apps</h2>
+<ul>
+   <li> show functions </li>
+   <li> list functions </li>
+   <li> update </li>
+   <li> validate </li>
+   <li> rewrite urls </li>
+   <li> filter </li>
+</ul>
+<aside class="notes">
+on top of the normal documents, you can have some special stuff in the database
+<br> … and <br>
+you can store attachments, say: html5, css and javascript
+</aside>
+</section>
+
+<section>
+<h2>Couch Apps</h2>
+<h5><a href="http://irc.softver.org.mk/">http://irc.softver.org.mk/</a></h5>
+<h5><a href="http://wiki.apache.org/couchdb/CouchDB_in_the_wild">CouchDB In The Wild</a></h5>
+<aside class="notes">
+lot of placed where CouchDB is used in background, BBC paper…
+<br>
+CMS, CRM, blogs, wikis, couchspora
+<br>
+now, most interesting to me are opendata projects. examples in boston…
+<br>
+storage for unhosted
+</aside>
+</section>
+
+
+<section>
+<h2>The future</h2>
+<ul>
+   <li> Big couch (distributed) </li>
+   <li> pocket couch (android, iOS, browser) </li>
+   <li> refuge (ad-hoc distributed couch) </li>
+   <li> unhosted </li>
+   <li> Couchbase (couchdb + membase) </li>
+</ul>
+<aside class="notes">
+scales up and down<br>
+more features (sharding) … already mentioned geo-couch, couch-lucene, more and more couchapps
+</aside>
+</section>
+
+<section>
+<h2>Resources</h2>
+<ul>
+   <li> http://couchdb.apache.org/ <br>
+   (wiki, mailing list, irc, issue tracking, download) </li>
+   <li> http://guide.couchdb.org/ </li>
+   <li> github, twitter </li>
+</ul>
+</section>
+
+<section>
+<h2>End!</h2>
+<h5 style="color:grey">(questions?)</h5>
+</section>
+
+</div>
+</div>
+
+<script type="text/javascript" src="../reveal.js/lib/js/head.min.js"></script>
+<script type="text/javascript" src="../reveal.js/js/reveal.min.js"></script>
+<script type="text/javascript">
+   Reveal.initialize({
+      dependencies: [
+         // Syntax highlight for <code> elements
+         { src: '../reveal.js/plugin/highlight/highlight.js',
+            async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+         // Zoom in and out with Alt+click
+         { src: '../reveal.js/plugin/zoom-js/zoom.js',
+            async: true, condition: function() { return !!document.body.classList; } },
+         // Speaker notes
+         { src: '../reveal.js/plugin/notes/notes.js',
+            async: true, condition: function() { return !!document.body.classList; } }
+      ]
+   });
+</script>
+</body>
+</html>
