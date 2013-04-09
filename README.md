@@ -37,7 +37,7 @@ Markup heirarchy needs to be ``<div class="reveal"> <div class="slides"> <sectio
 
 It's possible to write your slides using Markdown. To enable Markdown, add the ```data-markdown``` attribute to your ```<section>``` elements and wrap the contents in a ```<script type="text/template">``` like the example below.
 
-This is based on [data-markdown](https://gist.github.com/1343518) from [Paul Irish](https://github.com/paulirish) which in turn uses [showdown](https://github.com/coreyti/showdown/). This is sensitive to indentation (avoid mixing tabs and spaces) and line breaks (avoid consecutive breaks).
+This is based on [data-markdown](https://gist.github.com/1343518) from [Paul Irish](https://github.com/paulirish) which in turn uses [showdown](https://github.com/coreyti/showdown/). Sensitive to indentation (avoid mixing tabs and spaces) and line breaks (avoid consecutive breaks).
 
 ```html
 <section data-markdown>
@@ -47,6 +47,14 @@ This is based on [data-markdown](https://gist.github.com/1343518) from [Paul Iri
 		A paragraph with some text and a [link](http://hakim.se).
 	</script>
 </section>
+```
+
+#### External Markdown
+
+You can write your content as a separate file and have reveal.js load it at runtime. Note the separator arguments which determine how slides are delimited in the external file.
+
+```html
+<section data-markdown="example.md" data-separator="^\n\n\n" data-vertical="^\n\n"></section>
 ```
 
 ### Configuration
@@ -80,7 +88,7 @@ Reveal.initialize({
 	// Change the presentation direction to be RTL
 	rtl: false,
 
-	// Number of milliseconds between automatically proceeding to the 
+	// Number of milliseconds between automatically proceeding to the
 	// next slide, disabled when set to 0, this value can be overwritten
 	// by using a data-autoslide attribute on your slides
 	autoSlide: 0,
@@ -100,30 +108,41 @@ Reveal.initialize({
 Note that the new default vertical centering option will break compatibility with slides that were using transitions with backgrounds (`cube` and `page`). To restore the previous behavior, set `center` to `false`.
 
 
+The configuration can be updated after initialization using the ```configure``` method:
+
+```javascript
+// Turn autoSlide off
+Reveal.configure({ autoSlide: 0 });
+
+// Start auto-sliding every 5s
+Reveal.configure({ autoSlide: 5000 });
+```
+
+
 ### Presentation Size
 
-All presentations have a normal size, that is the resolution at which they are authored. The framework will automatically scale presentations uniformly based on this size to ensure that everything fits on any given display or viewport. 
+All presentations have a normal size, that is the resolution at which they are authored. The framework will automatically scale presentations uniformly based on this size to ensure that everything fits on any given display or viewport.
 
 See below for a list of configuration options related to sizing, including default values:
 
 ```javascript
 Reveal.initialize({
-	
+
 	...
-	
+
 	// The "normal" size of the presentation, aspect ratio will be preserved
 	// when the presentation is scaled to fit different resolutions. Can be
 	// specified using percentage units.
 	width: 960,
 	height: 700,
-	
+
 	// Factor of the display size that should remain empty around the content
 	margin: 0.1,
-	
+
 	// Bounds for smallest/largest possible scale to apply to content
 	minScale: 0.2,
 	maxScale: 1.0
-	
+
 });
 ```
 
@@ -166,7 +185,7 @@ You can add your own extensions using the same syntax. The following properties 
 
 ### API
 
-The Reveal class provides a minimal JavaScript API for controlling navigation and reading state:
+The ``Reveal`` class provides a minimal JavaScript API for controlling navigation and reading state:
 
 ```javascript
 // Navigation
@@ -242,6 +261,17 @@ You can also add relative navigation links, similar to the built in reveal.js co
 <a href="#" class="navigate-next"> <!-- Next vertical or horizontal slide -->
 ```
 
+### Alternating transitions
+The global presentation transition is set using the ```transition``` config value. You can override the global transition for a specific slide by using the ```data-transition``` attribute:
+
+```html
+<section data-transition="zoom">
+	<h2>This slide will override the presentation transition and zoom!</h2>
+</section>
+```
+
+Note that this does not work with the page and cube transitions.
+
 
 ### Fragments
 Fragments are used to highlight individual elements on a slide. Every elmement with the class ```fragment``` will be stepped through before moving on to the next slide. Here's an example: http://lab.hakim.se/reveal-js/#/16
@@ -270,6 +300,16 @@ Multiple fragments can be applied to the same element sequentially by wrapping i
 </section>
 ```
 
+The display order of fragments can be controlled using the ```data-fragment-index``` attribute.
+
+```html
+<section>
+	<p class="fragment" data-fragment-index="3">Appears last</p>
+	<p class="fragment" data-fragment-index="1">Appears first</p>
+	<p class="fragment" data-fragment-index="2">Appears second</p>
+</section>
+```
+
 ### Fragment events
 
 When a slide fragment is either shown or hidden reveal.js will dispatch an event.
@@ -283,7 +323,7 @@ Reveal.addEventListener( 'fragmenthidden', function( event ) {
 } );
 ```
 
-### Code syntax higlighting
+### Code syntax highlighting
 
 By default, Reveal is configured with [highlight.js](http://softwaremaniacs.org/soft/highlight/en/) for code syntax highlighting. Below is an example with clojure code that will be syntax highlighted:
 
@@ -319,7 +359,7 @@ Just press »F« on your keyboard to show your presentation in fullscreen mode. 
 
 ## PDF Export
 
-Presentations can be exported to PDF via a special print stylesheet. This feature requires that you use [Google Chrome](http://google.com/chrome). 
+Presentations can be exported to PDF via a special print stylesheet. This feature requires that you use [Google Chrome](http://google.com/chrome).
 Here's an example of an exported presentation that's been uploaded to SlideShare: http://www.slideshare.net/hakimel/revealjs-13872948.
 
 1. Open your presentation with [css/print/pdf.css](https://github.com/hakimel/reveal.js/blob/master/css/print/pdf.css) included on the page. The default index HTML lets you add *print-pdf* anywhere in the query to include the stylesheet, for example: [lab.hakim.se/reveal-js?print-pdf](http://lab.hakim.se/reveal-js?print-pdf).
@@ -334,7 +374,7 @@ Here's an example of an exported presentation that's been uploaded to SlideShare
 
 ## Speaker Notes
 
-reveal.js comes with a speaker notes plugin which can be used to present per-slide notes in a separate browser window. The notes window also gives you a preview of the next upcoming slide so it may be helpful even if you haven't written any notes. Append ```?notes``` to presentation URL or press the 's' key on your keyboard to open the notes window.
+reveal.js comes with a speaker notes plugin which can be used to present per-slide notes in a separate browser window. The notes window also gives you a preview of the next upcoming slide so it may be helpful even if you haven't written any notes. Append ```?notes``` to the presentation URL or press the 's' key on your keyboard to open the notes window.
 
 By default notes are written using standard HTML, see below, but you can add a ```data-markdown``` attribute to the ```<aside>``` to write them using Markdown.
 
@@ -348,13 +388,19 @@ By default notes are written using standard HTML, see below, but you can add a `
 </section>
 ```
 
-## Server Side Speaker Nodes
+## Server Side Speaker Notes
 
-In some cases it can be desirable to run notes on a separate device from the one you're presenting on. The Node.js-based notes plugin lets you do this using the same note definitions as its client side counterpart. Include the requried scripts by adding the following dependencies:
+In some cases it can be desirable to run notes on a separate device from the one you're presenting on. The Node.js-based notes plugin lets you do this using the same note definitions as its client side counterpart. Include the required scripts by adding the following dependencies:
 
 ```javascript
-{ src: '/socket.io/socket.io.js', async: true },
-{ src: 'plugin/notes-server/client.js', async: true }
+Reveal.initialize({
+	...
+
+	dependencies: [
+		{ src: 'socket.io/socket.io.js', async: true },
+		{ src: 'plugin/notes-server/client.js', async: true }
+	]
+});
 ```
 
 Then:
@@ -362,6 +408,36 @@ Then:
 1. Install [Node.js](http://nodejs.org/)
 2. Run ```npm install```
 3. Run ```node plugin/notes-server```
+
+
+## Multiplexing
+
+The multiplex plugin allows your audience to view the slides on their own phone, tablet or laptop. As the master navigates the slides, all clients will update in real time. See a demo at [http://revealjs.jit.su/](http://revealjs.jit.su).
+
+Configuration is via the multiplex object in ```Reveal.initialize```. To generate unique secret and token values, visit [revealjs.jit.su/token](http://revealjs.jit.su/token). Below is an example configuration with the multiplex plugin enabled:
+
+```javascript
+Reveal.initialize({
+	...
+
+	// Generate a unique id and secret at revealjs.jit.su/token
+	multiplex: {
+		id: '',
+		secret: '',
+		url: 'revealjs.jit.su:80'
+	},
+
+	dependencies: [
+		{ src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true },
+		{ src: 'plugin/multiplex/client.js', async: true },
+		{ src: 'plugin/multiplex/master.js', async: true },
+	]
+});
+```
+
+```multiplex.secret``` should only be configured on those pages you wish to be able to control slide navigation for all clients. Multi-master configurations work, but if you don't wish your audience to be able to control your slides, set the secret to ``null``. In this master/slave setup, you should create a publicly accessible page with secret set to ``null``, and a protected page containing your secret.
+
+You are very welcome to use the socketio server running at reveal.jit.su, however availability and stability are not guaranteed. For anything mission critical I recommend you run your own server. It is simple to deploy to nodejitsu or run on your own environment.
 
 
 ## Theming
@@ -386,7 +462,7 @@ If you want to add a theme of your own see the instructions here: [/css/theme/RE
 
 ## Development Environment
 
-reveal.js is built using the task-based command line build tool [grunt.js](http://gruntjs.com) ([installation instructions](https://github.com/gruntjs/grunt#installing-grunt)). With Node.js and grunt.js installed, you need to start by running ```npm install``` in the reveal.js root. When the dependencies have been installed you should run ```grunt watch``` to start monitoring files for changes.
+reveal.js is built using the task-based command line build tool [grunt.js](http://gruntjs.com) ([installation instructions](http://gruntjs.com/getting-started#installing-the-cli)). With Node.js and grunt.js installed, you need to start by running ```npm install``` in the reveal.js root. When the dependencies have been installed you should run ```grunt watch``` to start monitoring files for changes.
 
 If you want to customise reveal.js without running grunt.js you can alter the HTML to point to the uncompressed source files (css/reveal.css & js/reveal.js).
 
