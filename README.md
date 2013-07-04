@@ -4,4 +4,5 @@ To update reveal.js run:
         git://github.com/hakimel/reveal.js.git master
 
 * http://gdamjan.github.io/prezentacii/couchdb/
-* http://gdamjan.github.io/prezentacii/meteo-kutija-engage2
+* http://gdamjan.github.io/prezentacii/meteo-kutija-engage2/
+* http://gdamjan.github.io/prezentacii/analysis-sintensis-etf/
