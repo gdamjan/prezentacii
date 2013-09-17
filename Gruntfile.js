@@ -1,6 +1,6 @@
 /* global module:false */
 module.exports = function(grunt) {
-
+	var port = grunt.option('port') || 8000;
 	// Project configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 
 		// Tests will be added soon
 		qunit: {
-			files: [ 'test/**/*.html' ]
+			files: [ 'test/*.html' ]
 		},
 
 		uglify: {
@@ -75,6 +75,26 @@ module.exports = function(grunt) {
 			files: [ 'Gruntfile.js', 'js/reveal.js' ]
 		},
 
+		connect: {
+			server: {
+				options: {
+					port: port,
+					base: '.'
+				}
+			}
+		},
+
+		zip: {
+			'reveal-js-presentation.zip': [
+				'index.html',
+				'css/**',
+				'js/**',
+				'lib/**',
+				'images/**',
+				'plugin/**'
+			]
+		},
+
 		watch: {
 			main: {
 				files: [ 'Gruntfile.js', 'js/reveal.js', 'css/reveal.css' ],
@@ -89,16 +109,28 @@ module.exports = function(grunt) {
 	});
 
 	// Dependencies
+	grunt.loadNpmTasks( 'grunt-contrib-qunit' );
 	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-contrib-sass' );
+	grunt.loadNpmTasks( 'grunt-contrib-connect' );
+	grunt.loadNpmTasks( 'grunt-zip' );
 
 	// Default task
-	grunt.registerTask( 'default', [ 'jshint', 'cssmin', 'uglify' ] );
+	grunt.registerTask( 'default', [ 'jshint', 'cssmin', 'uglify', 'qunit' ] );
 
 	// Theme task
 	grunt.registerTask( 'themes', [ 'sass' ] );
+
+	// Package presentation to archive
+	grunt.registerTask( 'package', [ 'default', 'zip' ] );
+
+	// Serve presentation locally
+	grunt.registerTask( 'serve', [ 'connect', 'watch' ] );
+
+	// Run tests
+	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
 
 };
