@@ -1,0 +1,21 @@
+1) HTML/CSS/DOM
+   Firebug, also HTTP/Network
+2) Javascript, i.e. Jquery, manipulate css, events (click)
+3) single <button> -> do something
+4) more <buttons> -> how to differentiate (ids)
+5) ajax?
+6) bookmarklets - and let's modify some other peoples pages
+
+
+Editor?
+Easy to create files and edit them, serve them with http. Maybe even php (or some such for .js .py .ru?)
+User auths with github
+Instantiate a stateless Docker instance per user, get projects on-demand
+The instance/user can have several projects, each project has a public url
+import files from a github repo, publish project as github repo
+
+
+Part II
+=======
+
+Environment on Raspberry-Pi ... backend has GPIO/PWM/etc functions
