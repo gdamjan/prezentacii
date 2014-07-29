@@ -1,0 +1,8 @@
+
+ - ip
+ - dns
+ - tcp
+ - ethernet и bridge
+ - switch и hub
+ - wifi ap
+ - рутирање
