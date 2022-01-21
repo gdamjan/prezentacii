@@ -3,12 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>TITLE</title>
-
+    <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/dist/theme/black.css">
+    <link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css">
     <link type="text/css" rel="stylesheet" href="style.css"/>
-    <link type="text/css" rel="stylesheet" href="../reveal.js/css/reveal.min.css"/>
-    <link type="text/css" rel="stylesheet" href="../reveal.js/css/theme/default.css"/>
-    <link type="text/css" rel="stylesheet" href="../reveal.js/lib/css/zenburn.css"/>
-
 </head>
 <body>
 <div class="reveal">
@@ -28,23 +27,15 @@ Hi all, ...
 
 </div>
 </div>
+<script src="../reveal.js/dist/reveal.js"></script>
+<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+<script src="../reveal.js/plugin/notes/notes.js"></script>
+<script src="../reveal.js/plugin/zoom/zoom.js"></script>
 
-<script type="text/javascript" src="../reveal.js/lib/js/head.min.js"></script>
-<script type="text/javascript" src="../reveal.js/js/reveal.min.js"></script>
-<script type="text/javascript">
-   Reveal.initialize({
-      dependencies: [
-         // Syntax highlight for <code> elements
-         { src: '../reveal.js/plugin/highlight/highlight.js',
-            async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-         // Zoom in and out with Alt+click
-         { src: '../reveal.js/plugin/zoom-js/zoom.js',
-            async: true, condition: function() { return !!document.body.classList; } },
-         // Speaker notes
-         { src: '../reveal.js/plugin/notes/notes.js',
-            async: true, condition: function() { return !!document.body.classList; } }
-      ]
-   });
+<script>
+  Reveal.initialize({
+    plugins: [ RevealHighlight, RevealNotes, RevealZoom ]
+  });
 </script>
 </body>
 </html>
