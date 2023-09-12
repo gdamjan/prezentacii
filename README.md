@@ -19,3 +19,4 @@ yarn upgrade --caret --latest
 * http://gdamjan.github.io/prezentacii/couchdb/
 * http://gdamjan.github.io/prezentacii/meteo-kutija-engage2/
 * http://gdamjan.github.io/prezentacii/analysis-sintensis-etf/
+* http://gdamjan.github.io/prezentacii/svelte-101-beerjs/
