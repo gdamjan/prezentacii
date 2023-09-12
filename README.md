@@ -1,13 +1,21 @@
-To update reveal.js run:
+## Quickstart
 
-    git subtree pull --prefix=reveal.js --squash \
-        git://github.com/hakimel/reveal.js.git master
+```
+yarn
+yarn start
+```
 
-Hints:
-* To see them locally you could use `python -m http.server`
+## Upgrade reveal.js
+
+```
+yarn upgrade --caret --latest
+```
+
+### Hints:
 * To resize images use convert orig.png -resize 1024 new.png
 
-Some prezs:
+
+## Some prezs:
 * http://gdamjan.github.io/prezentacii/couchdb/
 * http://gdamjan.github.io/prezentacii/meteo-kutija-engage2/
 * http://gdamjan.github.io/prezentacii/analysis-sintensis-etf/

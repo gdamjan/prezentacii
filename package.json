@@ -1,0 +1,12 @@
+{
+  "name": "@gdamjan/prezentacii",
+  "url": "http://gdamjan.github.io/prezentacii/",
+  "license": "CC0-1.0",
+  "scripts": {
+    "start": "serve"
+  },
+  "dependencies": {
+    "reveal.js": "^4.5.0",
+    "serve": "^14.2.1"
+  }
+}
