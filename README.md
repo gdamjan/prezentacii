@@ -16,7 +16,8 @@ yarn upgrade --caret --latest
 
 
 ## Some prezs:
-* http://gdamjan.github.io/prezentacii/couchdb/
-* http://gdamjan.github.io/prezentacii/meteo-kutija-engage2/
-* http://gdamjan.github.io/prezentacii/analysis-sintensis-etf/
-* http://gdamjan.github.io/prezentacii/svelte-101-beerjs/
+* https://gdamjan.github.io/prezentacii/couchdb/
+* https://gdamjan.github.io/prezentacii/meteo-kutija-engage2/
+* https://gdamjan.github.io/prezentacii/analysis-sintensis-etf/
+* https://gdamjan.github.io/prezentacii/svelte-101-beerjs/
+* https://gdamjan.github.io/prezentacii/firefox-os/
