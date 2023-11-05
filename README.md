@@ -21,3 +21,4 @@ yarn upgrade --caret --latest
 * https://gdamjan.github.io/prezentacii/analysis-sintensis-etf/
 * https://gdamjan.github.io/prezentacii/svelte-101-beerjs/
 * https://gdamjan.github.io/prezentacii/firefox-os/
+* https://gdamjan.github.io/prezentacii/portable-services-nix/
