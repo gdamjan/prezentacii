@@ -23,8 +23,9 @@ A programming language
 (pure, functional, immutable, lazy)
 
 Note:
-it's a normal language, you know: numbers, strings, booleans, lists, attribute-sets (dicts)
-The only difference: paths, derivations
+- all the buzzwords
+- it's a normal language, you know: numbers, strings, booleans, lists, attribute-sets (dicts)
+- The only difference: paths, derivations
 
 ⌄⌄⌄
 
@@ -48,6 +49,9 @@ Some special types:
 - path
 - derivation
 
+Note:
+This is the magic sauce that allows Nix to build distributions
+
 ⌄⌄⌄
 Haskel for children
 
@@ -59,7 +63,8 @@ The standard library for Nix (built with Nix)
 Hermetically builds reproducible software and distros (images)
 
 Note:
-basically you write a function or two, and you get a Linux distro with some sofware its dependencies and configuration. All software is hermetically built in sandbox, reproducible, etc..
+- even more buzzwords
+- basically you write a function or two, and you get a Linux distro with some sofware its dependencies and configuration. All software is hermetically built in sandbox, reproducible, etc..
 
 Ok cool, so what can we make with that is Docker Images or full distros, but… I hate docker
 
@@ -70,15 +75,16 @@ Ok cool, so what can we make with that is Docker Images or full distros, but… 
 2) Native Systemd service
 
 Note:
-- I love systemd
+- I love systemd (BSD people can leave now)
 - images, encapsulating all your software solve a problem
 - systemd has a better runtime (than docker)
+  - timers, socket activation, deps and ordering
 
 ---
 <img data-src="nixpkgs-pr.png">
 
 Note:
-so I decided to use my newly found Nix powers and contribute
+so I decided to use my newly found Nix powers and contribute the support for building portable services with Nix
 
 ---
 <!-- .slide: data-background-iframe="https://nixos.org/manual/nixpkgs/stable/#sec-pkgs-portableService" data-preload -->
@@ -104,6 +110,9 @@ sudo portablectl attach --enable --now nextcloud_27.1.2
 
 [![asciicast](https://asciinema.org/a/ZnyefcSbwbz1dbEo9scCD9XdG.png)](https://asciinema.org/a/ZnyefcSbwbz1dbEo9scCD9XdG?autoplay=1)
 
+Note:
+if we have 30 secs to spare
+
 ⌄⌄⌄
 <img data-src="nextcloud-installed.png">
 
@@ -120,6 +129,7 @@ sudo portablectl attach --enable --now nextcloud_27.1.2
 ## Q&A
 
 (Няма време)
+
 <br/>
 <br/>
 
