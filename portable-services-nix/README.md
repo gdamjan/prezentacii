@@ -1,4 +1,5 @@
 ## Systemd Portable Services with <b style="color:red">Nix</b>
+<span>(in 5 mins, <i>phew!</i>)</span> <!-- .element: class="fragment fade-up" data-fragment-index="1" -->
 
 ---
 ## @gdamjan
