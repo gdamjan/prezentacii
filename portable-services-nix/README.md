@@ -7,7 +7,7 @@
 
 Слободен Софтвер Македонија
 
-Hacklab Kika
+Hacklab Kika Скопје
 
 Note:
 вовед, кој сум шо сум, хаклаб КИКА
@@ -119,6 +119,16 @@ sudo portablectl attach --enable --now nextcloud_27.1.2
 ## Q&A
 
 (Няма време)
+<br/>
+<br/>
+
+#### @gdamjan
+
+<small>
+Дамјан Георгиевски
+
+Слободен Софтвер Македонија, Hacklab Kika Скопје
+</small>
 
 Note:
 The moral of the story is: Yes You Can!
