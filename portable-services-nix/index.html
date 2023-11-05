@@ -1,0 +1,35 @@
+<html>
+
+<head>
+  <title>Портабъл Сервиси со Никс</title>
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="stylesheet" href="../node_modules/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="../node_modules/reveal.js/dist/theme/serif.css">
+  <script src="../node_modules/reveal.js/dist/reveal.js"></script>
+  <script src="../node_modules/reveal.js/plugin/markdown/markdown.js"></script>
+  <script src="../node_modules/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+  <link rel="stylesheet" href="../node_modules/reveal.js/plugin/highlight/monokai.css">
+  <style>
+    .reveal ol,
+    .reveal dl,
+    .reveal ul {
+      font-size: smaller;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!-- https://revealjs.com/markdown/ -->
+      <section data-markdown="README.md" data-separator-vertical="^⌄⌄⌄" />
+    </div>
+  </div>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      plugins: [RevealMarkdown, RevealNotes, RevealHighlight]
+    });
+  </script>
+</body>
