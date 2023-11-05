@@ -1,5 +1,5 @@
 ## Systemd Portable Services with <b style="color:red">Nix</b>
-<span>(in 5 mins, <i>phew!</i>)</span> <!-- .element: class="fragment fade-up" data-fragment-index="1" -->
+<span>(in 5 mins, <i>phew!</i>)</span> <!-- .element: class="fragment fade-up" -->
 
 ---
 ## @gdamjan
@@ -53,6 +53,7 @@ Note:
 This is the magic sauce that allows Nix to build distributions
 
 ⌄⌄⌄
+
 Haskel for children
 
 ---
@@ -73,6 +74,7 @@ Ok cool, so what can we make with that is Docker Images or full distros, but… 
 
 1) Image of your software + all dependencies
 2) Native Systemd service
+    - socket activation, timers, runtime dependencies, ordering
 
 Note:
 - I love systemd (BSD people can leave now)
@@ -81,7 +83,11 @@ Note:
   - timers, socket activation, deps and ordering
 
 ---
-<img data-src="nixpkgs-pr.png">
+
+### Lets build Portable Service Images with Nix
+
+---
+![the pkgs.portableService PR in nixpkgs](nixpkgs-pr.png)
 
 Note:
 so I decided to use my newly found Nix powers and contribute the support for building portable services with Nix
@@ -89,14 +95,18 @@ so I decided to use my newly found Nix powers and contribute the support for bui
 ---
 <!-- .slide: data-background-iframe="https://nixos.org/manual/nixpkgs/stable/#sec-pkgs-portableService" data-preload -->
 
+Note:
+the docs in Nix for the pkgs.portableService function
+
 ---
 ## Demo
 
 ⌄⌄⌄
-<img data-src="demo-project-nextcloud-release.png">
+![nextcloud portable service - github releases](demo-project-nextcloud-release.png)
 
 ⌄⌄⌄
 
+Install the portable image on any Linux OS (with systemd >= 239)
 ```
 sudo wget -P /var/lib/portables/ \
   github.com/gdamjan/nextcloud-service/…/nextcloud_27.1.2.raw
@@ -114,7 +124,7 @@ Note:
 if we have 30 secs to spare
 
 ⌄⌄⌄
-<img data-src="nextcloud-installed.png">
+![nextcloud running](nextcloud-installed.png)
 
 ---
 ## References
