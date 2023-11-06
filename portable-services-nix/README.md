@@ -103,6 +103,7 @@ the docs in Nix for the pkgs.portableService function
 
 ⌄⌄⌄
 ![nextcloud portable service - github releases](demo-project-nextcloud-release.png)
+<small>(built on Github actions with `nix build`)</small>
 
 ⌄⌄⌄
 
