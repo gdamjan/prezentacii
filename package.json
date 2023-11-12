@@ -6,7 +6,7 @@
     "start": "serve"
   },
   "dependencies": {
-    "reveal.js": "^4.5.0"
+    "reveal.js": "^5.0.2"
   },
   "devDependencies": {
     "serve": "^14.2.1"

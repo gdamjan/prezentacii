@@ -21,14 +21,16 @@
 <body>
   <div class="reveal">
     <div class="slides">
-      <!-- https://revealjs.com/markdown/ -->
-      <section data-markdown="README.md" data-separator-vertical="^⌄⌄⌄" />
+      <section data-markdown="README.md" />
     </div>
   </div>
   <script>
     Reveal.initialize({
       hash: true,
-      plugins: [RevealMarkdown, RevealNotes, RevealHighlight]
+      plugins: [RevealMarkdown, RevealNotes, RevealHighlight],
+      markdown: {
+        verticalSeparator: '\n⌄⌄⌄\n',
+      },
     });
   </script>
 </body>
