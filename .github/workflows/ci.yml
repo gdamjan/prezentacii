@@ -14,12 +14,11 @@ jobs:
 
     - uses: pnpm/action-setup@v2
 
-    - run: pnpm install --prod
+    - name: prepare artifact
+      run: bash make-site-index.sh _site
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
-      with:
-        path: ./
 
   deploy:
     if: github.ref_name == 'main'
@@ -41,5 +40,5 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-    - uses: actions/deploy-pages@v1
+    - uses: actions/deploy-pages@v2
       id: deployment
