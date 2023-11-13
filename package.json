@@ -10,5 +10,12 @@
   },
   "devDependencies": {
     "serve": "^14.2.1"
-  }
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8",
+    "npm": "please-use-pnpm",
+    "yarn": "please-use-pnpm"
+  },
+  "packageManager": "pnpm@^8"
 }

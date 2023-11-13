@@ -1,14 +1,14 @@
 ## Quickstart
 
 ```
-yarn
-yarn start
+pnpm install
+pnpm start
 ```
 
 ## Upgrade reveal.js
 
 ```
-yarn upgrade --caret --latest
+pnpm upgrade --latest
 ```
 
 ### Hints:
