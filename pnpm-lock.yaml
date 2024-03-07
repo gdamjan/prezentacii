@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   reveal.js:
-    specifier: ^5.0.2
-    version: 5.0.2
+    specifier: ^5.0.5
+    version: 5.0.5
 
 devDependencies:
   serve:
@@ -428,8 +428,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /reveal.js@5.0.2:
-    resolution: {integrity: sha512-G5dhsr/2wormdrYPtZBfRamvnPrHc/8TtYVH3EpIzfMyKSiTprFwn61nFZbcmeK4iKKdLq2MMiiMNqlRmkBU4A==}
+  /reveal.js@5.0.5:
+    resolution: {integrity: sha512-MPWPV/cRlkZhh72dAGYv/bUCr9ulwM2/ucCqiL/KN4tvhb6VvN49iwOyWHE08wppj8lMQXi2xbS3kyKgfyTYqg==}
     engines: {node: '>=18.0.0'}
     dev: false
 
