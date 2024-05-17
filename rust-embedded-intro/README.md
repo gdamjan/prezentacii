@@ -143,7 +143,25 @@ just a short detour what/how ownership in Rust is/works
 - `cargo run`
 - `cargo embed` (probe-rs)
 - hello-world
-- svd, pac, hal…
+⌄⌄⌄
+
+svd - System View Description
+
+⌄
+
+pac - Peripheral Access Crate
+
+⌄
+
+HAL - Hardware Abstraction Layer
+
+⌄
+
+BSP - Board Support Package
+
+Note:
+some rust embedded terminology
+https://docs.rust-embedded.org/discovery/microbit/04-meet-your-hardware/terminology.html
 
 ⌄⌄⌄
 ### [nRF5340-DK](https://www.nordicsemi.com/Products/Development-hardware/nRF5340-DK)
