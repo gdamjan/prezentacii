@@ -58,6 +58,9 @@ Note:
 ![rpi-pico](./img/rpi-pico.jpg)
 
 ⌄⌄⌄
+![esp32-c3-dual](./img/esp32-c3-dual.jpg)
+
+⌄⌄⌄
 
 instruction set architecture (ISA)
 
