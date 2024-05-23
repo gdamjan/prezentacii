@@ -211,7 +211,7 @@ https://docs.rust-embedded.org/discovery/microbit/04-meet-your-hardware/terminol
 * https://rustup.rs/
 * IRC channel #rust-embedded on libera.chat (matrix)
 * https://embassy.dev/
-* https://www.youtube.com/playlist?list=PLIWc_eqdlTFGupmZO3vQ7mVMkSz0f8Ym9
+* [a youtube playlist I keep](https://www.youtube.com/playlist?list=PLIWc_eqdlTFGupmZO3vQ7mVMkSz0f8Ym9)
 
 ⌄⌄⌄
 ## Off-topic Ресурси
