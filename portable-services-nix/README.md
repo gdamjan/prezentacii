@@ -109,8 +109,8 @@ the docs in Nix for the pkgs.portableService function
 
 Install the portable image on any Linux OS (with systemd >= 239)
 ```
-sudo wget -P /var/lib/portables/ \
-  github.com/gdamjan/nextcloud-service/…/nextcloud_27.1.2.raw
+importctl pull-raw --class=portable --verify=checksum
+  https://github.com/gdamjan/nextcloud-service/…/nextcloud_27.1.2.raw
 
 portablectl list
 
